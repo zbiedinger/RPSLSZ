@@ -9,12 +9,13 @@ namespace RPSLS
     class Rock : Gesture
     {
         //Member Variables
-        
+        string name;
 
 
         //Constructor
         public Rock()
         {
+            string name = "Rock";
 
         }
 

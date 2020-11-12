@@ -14,37 +14,19 @@ namespace RPSLS
         public List<Gesture> gestureChoices;
         public int score;
         public string currentGesture;
-        Random rand;
 
 
 
         //Constructor
-        public Victim(string playerName)
+        public Victim()
         {
-            this.playerName = playerName;
             score = 0;
             currentGesture = "";
-            rand = new Random();
-
-            Rock rock = new Rock();
-            Paper paper = new Paper();
-            Scissors scissors = new Scissors();
-            Lizard lizard = new Lizard();
-            Spock spock = new Spock();
-
-            gestureChoices = new List<Gesture>() { rock, paper, scissors, lizard, spock };
         }
 
 
         //Member Methods
-        public string selectingGesture(bool isPerson)
-        {
-            string newPick = "";
-
-
-
-            return newPick;
-        }
+        
 
     }
 }

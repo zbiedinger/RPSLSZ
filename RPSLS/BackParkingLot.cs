@@ -14,9 +14,6 @@ namespace RPSLS
         public int playerOneScore;
         public int playerTwoScore;
         public bool noWinner;
-        public Victim playerOne;
-        public Victim playerTwo;
-
 
 
         //Constructor
@@ -67,18 +64,18 @@ namespace RPSLS
                 Console.WriteLine("Whats your name?");
                 string inputName = Console.ReadLine();
 
-                Victim playerOne = new Victim(inputName);
-                Victim playerTwo = new Victim("Computer");
+                Person playerOne = new Person(inputName);
+                Computer playerTwo = new Computer();
             }
             else if (responcePlayer == "2")
             {
                 Console.WriteLine("Player one's name?");
                 string inputName = Console.ReadLine();
-                Victim playerOne = new Victim(inputName);
+                Person playerOne = new Person(inputName);
 
                 Console.WriteLine("\nPlayer two's name?");
                 inputName = Console.ReadLine();
-                Victim playerTwo = new Victim(inputName);
+                Person playerTwo = new Person(inputName);
             }
 
 
