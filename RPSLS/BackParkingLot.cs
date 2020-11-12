@@ -14,13 +14,16 @@ namespace RPSLS
         public int playerOneScore;
         public int playerTwoScore;
         public bool noWinner;
+        public Victim playerOne;
+        public Victim playerTwo;
+
 
 
         //Constructor
         public BackParkingLot()
         {
             twoPlayers = true;
-            bestOfNumber = 3;
+            bestOfNumber = 2;
             playerOneScore = 0;
             playerTwoScore = 0;
             noWinner = true;
@@ -32,26 +35,24 @@ namespace RPSLS
         //Set up the game play situation and peramiters: # of players and rounds
         public void StartUp()
         {
+            //Checking the number of players.
             Graphics("start");
             Console.WriteLine("________________________");
             Console.WriteLine("One player or two?");
 
             string responcePlayer = Console.ReadLine();
-            bool wrong = true;
 
-            while (wrong)
+            while (responcePlayer != "1" && responcePlayer != "2")
             {
                 if (responcePlayer == "1")
                 {
                     twoPlayers = false;
                     Console.WriteLine("You chose one player.");
-                    wrong = false;
 
                 }
                 else if (responcePlayer == "2")
                 {
                     Console.WriteLine("You chose two players.");
-                    wrong = false;
                 }
                 else
                 {
@@ -60,30 +61,48 @@ namespace RPSLS
                 }
             }
 
+            //Getting player info
+            if (responcePlayer == "1")
+            {
+                Console.WriteLine("Whats your name?");
+                string inputName = Console.ReadLine();
+
+                Victim playerOne = new Victim(inputName);
+                Victim playerTwo = new Victim("Computer");
+            }
+            else if (responcePlayer == "2")
+            {
+                Console.WriteLine("Player one's name?");
+                string inputName = Console.ReadLine();
+                Victim playerOne = new Victim(inputName);
+
+                Console.WriteLine("\nPlayer two's name?");
+                inputName = Console.ReadLine();
+                Victim playerTwo = new Victim(inputName);
+            }
+
+
+            //Checking the number of rounds to play. 
             Console.WriteLine("________________________");
             Console.WriteLine("Best out of 3, 5, 9?");
 
             string responceRound = Console.ReadLine();
-            wrong = true;
             
-            while (wrong)
+            while (responceRound != "3" && responceRound != "5" && responceRound != "9")
             {
                 if (responceRound == "3")
                 {
                     Console.WriteLine("Lets play best of 3");
-                    wrong = false;
                 }
                 else if (responceRound == "5")
                 {
-                    bestOfNumber = 5;
+                    bestOfNumber = 3;
                     Console.WriteLine("Lets play best of 5");
-                    wrong = false;
                 }
                 else if (responceRound == "9")
                 {
-                    bestOfNumber = 9;
+                    bestOfNumber = 5;
                     Console.WriteLine("Lets play best of 9");
-                    wrong = false;
                 }
                 else
                 {
@@ -109,28 +128,32 @@ namespace RPSLS
                     Console.WriteLine("Start of Game\n");
                     break;
                 case "oneWins":
-                    Console.WriteLine("Player 1 wins!");
+                    Console.WriteLine("Player 1 wins this round!");
                     break;
                 case "twoWins":
-                    Console.WriteLine("Player 2 wins!");
+                    Console.WriteLine("Player 2 wins this round!");
                     break;
                 case "youWin":
-                    Console.WriteLine("You win!");
+                    Console.WriteLine("You win this round!");
                     break;
                 case "computerWin":
-                    Console.WriteLine("Computer wins!");
+                    Console.WriteLine("Computer wins this round!");
                     break;
                 case "score":
                     Console.WriteLine("____________________________________________");
                     Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                    Console.WriteLine($"                            Player 1: {playerOneScore}");
-                    Console.WriteLine($"                            Player 2: {playerTwoScore}");
+                    Console.WriteLine($"                                playerOne: {playerOneScore}");
+                    Console.WriteLine($"                                playerTwo: {playerTwoScore}");
                     break;
                 case "slander":
                     //tongue and cheek comments to make things more fun
                     //maybe add comments of encuragement if a player is losing?
                     //if statment to see if player is losing or winner.
                     //add random number generator and pit a different comment each time
+                    break;
+                case "choices":
+                    Console.WriteLine("Pick you gesture:");
+                    Console.WriteLine("1.Rock, 2.Paper, 3.Scissor, 4.Lizard, 5.Spock\n");
                     break;
 
             }
@@ -139,6 +162,9 @@ namespace RPSLS
 
         public void RoundOfGame()
         {
+            Graphics("score");
+            Graphics("choices");
+
             playerOneScore++;
         }
 
@@ -166,6 +192,7 @@ namespace RPSLS
                 }
             }
             
+            //display winner
 
 
             Console.ReadLine(); 
