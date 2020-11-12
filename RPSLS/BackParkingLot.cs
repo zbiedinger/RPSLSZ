@@ -9,43 +9,38 @@ namespace RPSLS
     class BackParkingLot
     {
         //Member Variables
-        public bool twoPlayers;
         public int bestOfNumber;
         public int playerOneScore;
         public int playerTwoScore;
         public bool noWinner;
+        public List<Victim> victims;
+
 
 
         //Constructor
         public BackParkingLot()
         {
-            twoPlayers = true;
             bestOfNumber = 2;
             playerOneScore = 0;
             playerTwoScore = 0;
             noWinner = true;
+            victims = new List<Victim>();
         }
 
 
 
         //Member Methods
-        //Set up the game play situation and peramiters: # of players and rounds
-        public void StartUp()
+        //Checking number of players in game.
+        public void SetNumberOfPlayers()
         {
-            //Checking the number of players.
-            Graphics("start");
-            Console.WriteLine("________________________");
             Console.WriteLine("One player or two?");
-
             string responcePlayer = Console.ReadLine();
 
             do
             {
                 if (responcePlayer == "1")
                 {
-                    twoPlayers = false;
                     Console.WriteLine("You chose one player.");
-
                 }
                 else if (responcePlayer == "2")
                 {
@@ -58,29 +53,40 @@ namespace RPSLS
                 }
             } while (responcePlayer != "1" && responcePlayer != "2");
 
-            //Getting player info
             if (responcePlayer == "1")
             {
-                Console.WriteLine("Whats your name?");
-                string inputName = Console.ReadLine();
-
-                Person playerOne = new Person(inputName);
-                Computer playerTwo = new Computer();
+                CreateVictim("person");
+                CreateVictim("computer");
             }
             else if (responcePlayer == "2")
             {
-                Console.WriteLine("Player one's name?");
-                string inputName = Console.ReadLine();
-                Person playerOne = new Person(inputName);
-
-                Console.WriteLine("\nPlayer two's name?");
-                inputName = Console.ReadLine();
-                Person playerTwo = new Person(inputName);
+                CreateVictim("person");
+                CreateVictim("person");
             }
+        }
 
+        //Creating Vicims based on passed string. set up to allow more posssible child classes of victim
+        public void CreateVictim(string victimType)
+        {
+            switch (victimType)
+            {
+                case "person":
+                    Console.WriteLine("Player's name?");
+                    string inputName = Console.ReadLine();
+                    Person player = new Person(inputName);
+                    victims.Add(player);
+                    break;
 
-            //Checking the number of rounds to play. 
-            Console.WriteLine("________________________");
+                case "computer":
+                    Computer robot = new Computer();
+                    victims.Add(robot);
+                    break;
+            }
+        }
+
+        //Checking the number of rounds to play. 
+        public void SetNumberOfRounds()
+        {
             Console.WriteLine("Best out of 3, 5, 9?");
 
             string responceRound = Console.ReadLine();
@@ -109,6 +115,19 @@ namespace RPSLS
             } while (responceRound != "3" && responceRound != "5" && responceRound != "9");
         }
 
+
+        //Set up the game play situation and peramiters: # of players and rounds
+        public void StartUp()
+        {
+            Graphics("start");
+            Graphics("rules");
+            
+            SetNumberOfPlayers();
+
+            Console.WriteLine("________________________");
+            SetNumberOfRounds();
+        }
+
         //Holds and displays art/comments
         //will add more fun stuff and cheeky comment later
         public void Graphics(string display)
@@ -117,11 +136,13 @@ namespace RPSLS
             {
                 case "rules":
                     //Display the rules of the game
+                    Console.WriteLine("________________________");
                     break;
                 case "newRound":
                     Console.WriteLine("Next Round! Are you ready?");
                     break;
                 case "start":
+                    //add cool graphis for the game
                     Console.WriteLine("Start of Game\n");
                     break;
                 case "oneWins":
