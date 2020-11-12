@@ -10,9 +10,8 @@ namespace RPSLS
     {
         //Member Variables
         public int bestOfNumber;
-        public int playerOneScore;
-        public int playerTwoScore;
         public bool noWinner;
+        public string winnerOfThisGame;
         public List<Victim> victims;
 
 
@@ -21,9 +20,8 @@ namespace RPSLS
         public BackParkingLot()
         {
             bestOfNumber = 2;
-            playerOneScore = 0;
-            playerTwoScore = 0;
             noWinner = true;
+            winnerOfThisGame = "";
             victims = new List<Victim>();
         }
 
@@ -115,7 +113,6 @@ namespace RPSLS
             } while (responceRound != "3" && responceRound != "5" && responceRound != "9");
         }
 
-
         //Set up the game play situation and peramiters: # of players and rounds
         public void StartUp()
         {
@@ -145,23 +142,14 @@ namespace RPSLS
                     //add cool graphis for the game
                     Console.WriteLine("Start of Game\n");
                     break;
-                case "oneWins":
-                    Console.WriteLine("Player 1 wins this round!");
-                    break;
-                case "twoWins":
-                    Console.WriteLine("Player 2 wins this round!");
-                    break;
-                case "youWin":
-                    Console.WriteLine("You win this round!");
-                    break;
-                case "computerWin":
-                    Console.WriteLine("Computer wins this round!");
+                case "winner":
+                    Console.WriteLine($"{winnerOfThisGame} won this round!");
                     break;
                 case "score":
                     Console.WriteLine("____________________________________________");
                     Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                    Console.WriteLine($"                                playerOne: {playerOneScore}");
-                    Console.WriteLine($"                                playerTwo: {playerTwoScore}");
+                    Console.WriteLine($"                                    {victims[0].playerName}: {victims[0].score}");
+                    Console.WriteLine($"                                    {victims[1].playerName}: {victims[1].score}");
                     break;
                 case "slander":
                     //tongue and cheek comments to make things more fun
@@ -173,17 +161,30 @@ namespace RPSLS
                     Console.WriteLine("Pick you gesture:");
                     Console.WriteLine("1.Rock, 2.Paper, 3.Scissor, 4.Lizard, 5.Spock\n");
                     break;
+                case "gameWinner":
+                    Console.WriteLine($"{winnerOfThisGame} is the Winner");
+                    break;
 
             }
 
         }
 
+        public string CompareGestures(Gesture gestureOne, Gesture gestureTwo)
+        {
+
+
+            return victims[0].playerName;
+        }
+
+        //
         public void RoundOfGame()
         {
             Graphics("score");
             Graphics("choices");
 
-            playerOneScore++;
+            victims[0].score++;
+            winnerOfThisGame = CompareGestures(victims[0].SelectingGesture(), victims[1].SelectingGesture());
+            Graphics("winner");
         }
 
 
@@ -198,20 +199,19 @@ namespace RPSLS
             {
                 RoundOfGame();
                 
-                if (playerOneScore == bestOfNumber)
+                if (victims[0].score == bestOfNumber)
                 {
                     noWinner = false;
-                    Graphics("oneWins");
+                    winnerOfThisGame = victims[0].playerName;
+                    Graphics("gameWinner");
                 }
-                else if (playerTwoScore == bestOfNumber)
+                else if (victims[1].score == bestOfNumber)
                 {
                     noWinner = false;
-                    Graphics("twoWins");
+                    winnerOfThisGame = victims[1].playerName;
+                    Graphics("gameWinner");
                 }
             }
-            
-            //display winner
-
 
             Console.ReadLine(); 
         }
