@@ -42,7 +42,7 @@ namespace RPSLS
 
             string responcePlayer = Console.ReadLine();
 
-            while (responcePlayer != "1" && responcePlayer != "2")
+            do
             {
                 if (responcePlayer == "1")
                 {
@@ -59,7 +59,7 @@ namespace RPSLS
                     Console.WriteLine("Lets try that again.\n1 or 2 players?");
                     responcePlayer = Console.ReadLine();
                 }
-            }
+            } while (responcePlayer != "1" && responcePlayer != "2");
 
             //Getting player info
             if (responcePlayer == "1")
@@ -87,8 +87,8 @@ namespace RPSLS
             Console.WriteLine("Best out of 3, 5, 9?");
 
             string responceRound = Console.ReadLine();
-            
-            while (responceRound != "3" && responceRound != "5" && responceRound != "9")
+
+            do
             {
                 if (responceRound == "3")
                 {
@@ -109,7 +109,7 @@ namespace RPSLS
                     Console.WriteLine("Lets try that again.\nHow many rounds to get a winner? 3, 5, or 9");
                     responceRound = Console.ReadLine();
                 }
-            }
+            } while (responceRound != "3" && responceRound != "5" && responceRound != "9");
         }
 
         //Holds and displays art/comments
