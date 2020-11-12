@@ -13,10 +13,7 @@ namespace RPSLS
         public int bestOfNumber;
         public int playerOneScore;
         public int playerTwoScore;
-
-
-
-
+        public bool noWinner;
 
 
         //Constructor
@@ -26,11 +23,13 @@ namespace RPSLS
             bestOfNumber = 3;
             playerOneScore = 0;
             playerTwoScore = 0;
+            noWinner = true;
         }
 
 
 
         //Member Methods
+        //Set up the game play situation and peramiters: # of players and rounds
         public void StartUp()
         {
             Graphics("start");
@@ -38,57 +37,70 @@ namespace RPSLS
             Console.WriteLine("One player or two?");
 
             string responcePlayer = Console.ReadLine();
-            //while (responcePlayer != "1" || responcePlayer != "2")
-            //{
-            //    Console.WriteLine("Lets try that again.\n1 or 2 players?");
-            //    responcePlayer = Console.ReadLine();
-            //}
+            bool wrong = true;
 
-            if (responcePlayer == "1")
+            while (wrong)
             {
-                twoPlayers = false;
-                Console.WriteLine("you choise one player.");
+                if (responcePlayer == "1")
+                {
+                    twoPlayers = false;
+                    Console.WriteLine("You chose one player.");
+                    wrong = false;
 
-            }
-            else
-            {
-                Console.WriteLine("you choise two players.");
+                }
+                else if (responcePlayer == "2")
+                {
+                    Console.WriteLine("You chose two players.");
+                    wrong = false;
+                }
+                else
+                {
+                    Console.WriteLine("Lets try that again.\n1 or 2 players?");
+                    responcePlayer = Console.ReadLine();
+                }
             }
 
             Console.WriteLine("________________________");
             Console.WriteLine("Best out of 3, 5, 9?");
 
             string responceRound = Console.ReadLine();
-            //while (responceRound != "3" || responceRound != "5" || responceRound != "9")
-            //{
-            //    Console.WriteLine("Lets try that again.\n How many rounds to get a winner? 3, 5, or 9");
-            //    responceRound = Console.ReadLine();
-            //}
-
-            if (responceRound == "5")
+            wrong = true;
+            
+            while (wrong)
             {
-                bestOfNumber = 5;
-                Console.WriteLine("Lets play best of 5");
+                if (responceRound == "3")
+                {
+                    Console.WriteLine("Lets play best of 3");
+                    wrong = false;
+                }
+                else if (responceRound == "5")
+                {
+                    bestOfNumber = 5;
+                    Console.WriteLine("Lets play best of 5");
+                    wrong = false;
+                }
+                else if (responceRound == "9")
+                {
+                    bestOfNumber = 9;
+                    Console.WriteLine("Lets play best of 9");
+                    wrong = false;
+                }
+                else
+                {
+                    Console.WriteLine("Lets try that again.\nHow many rounds to get a winner? 3, 5, or 9");
+                    responceRound = Console.ReadLine();
+                }
             }
-            else if (responceRound == "9")
-            {
-                bestOfNumber = 9;
-                Console.WriteLine( "Lets play best of 9");
-            }
-            else
-            {
-                Console.WriteLine("Lets play best of 3");
-            }
-
         }
 
-        //Holds and displays all the bulky displays
+        //Holds and displays art/comments
+        //will add more fun stuff and cheeky comment later
         public void Graphics(string display)
         {
             switch (display)
             {
                 case "rules":
-
+                    //Display the rules of the game
                     break;
                 case "newRound":
                     Console.WriteLine("Next Round! Are you ready?");
@@ -109,20 +121,52 @@ namespace RPSLS
                     Console.WriteLine("Computer wins!");
                     break;
                 case "score":
+                    Console.WriteLine("____________________________________________");
+                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                     Console.WriteLine($"                            Player 1: {playerOneScore}");
                     Console.WriteLine($"                            Player 2: {playerTwoScore}");
+                    break;
+                case "slander":
+                    //tongue and cheek comments to make things more fun
+                    //maybe add comments of encuragement if a player is losing?
+                    //if statment to see if player is losing or winner.
+                    //add random number generator and pit a different comment each time
                     break;
 
             }
 
         }
 
+        public void RoundOfGame()
+        {
+            playerOneScore++;
+        }
+
 
         //Gameplay and starta of a round
-        public void NewRound()
+        public void Gameplay()
         {
             StartUp();
             Graphics("rules");
+            Graphics("start");
+
+            while (noWinner)
+            {
+                RoundOfGame();
+                
+                if (playerOneScore == bestOfNumber)
+                {
+                    noWinner = false;
+                    Graphics("oneWins");
+                }
+                else if (playerTwoScore == bestOfNumber)
+                {
+                    noWinner = false;
+                    Graphics("twoWins");
+                }
+            }
+            
+
 
             Console.ReadLine(); 
         }

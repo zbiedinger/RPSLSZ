@@ -11,7 +11,7 @@ namespace RPSLS
         static void Main(string[] args)
         {
             BackParkingLot backParkingLot = new BackParkingLot();
-            backParkingLot.NewRound();
+            backParkingLot.Gameplay();
         }
     }
 }
