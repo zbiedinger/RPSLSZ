@@ -142,9 +142,6 @@ namespace RPSLS
                     //add cool graphis for the game
                     Console.WriteLine("Start of Game\n");
                     break;
-                case "winner":
-                    Console.WriteLine($"{winnerOfThisGame} won this round!");
-                    break;
                 case "score":
                     Console.WriteLine("____________________________________________");
                     Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -161,6 +158,12 @@ namespace RPSLS
                     Console.WriteLine("Pick you gesture:");
                     Console.WriteLine("1.Rock, 2.Paper, 3.Scissor, 4.Lizard, 5.Spock\n");
                     break;
+                case "tie":
+                    Console.WriteLine("you tied!");
+                    break;
+                case "winner":
+                    Console.WriteLine($"{winnerOfThisGame} won this round!");
+                    break;
                 case "gameWinner":
                     Console.WriteLine($"{winnerOfThisGame} is the Winner");
                     break;
@@ -169,23 +172,59 @@ namespace RPSLS
 
         }
 
-        public string CompareGestures(Gesture gestureOne, Gesture gestureTwo)
+        //public string CompareGestures(Gesture gestureOne, Gesture gestureTwo)
+        //{
+        //    if(true)
+        //    {
+
+        //    }
+        //    victims[0].score++;
+
+        //    return victims[0].playerName;
+        //}
+        public bool Is1AWeaknessOf2(Gesture gestureOne, Gesture gestureTwo)
         {
-
-
-            return victims[0].playerName;
+            if (gestureOne.name == gestureTwo.stringWeakness[0] || gestureOne.name == gestureTwo.stringWeakness[1])
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        //
+        //logic of a single round.
         public void RoundOfGame()
         {
             Graphics("score");
             Graphics("choices");
 
-            victims[0].score++;
-            winnerOfThisGame = CompareGestures(victims[0].SelectingGesture(), victims[1].SelectingGesture());
-            Graphics("winner");
-        }
+            Gesture gestureOfROund1 = victims[0].SelectingGesture();
+            Gesture gestureOfROund2 = victims[1].SelectingGesture();
+
+            Console.WriteLine($"\n{gestureOfROund1.name} vs {gestureOfROund2.name}\n");
+
+            if (gestureOfROund1.name == gestureOfROund2.name)
+            {
+                Graphics("tie");
+            }
+            else
+            {
+                bool playerOneWins = Is1AWeaknessOf2(gestureOfROund1, gestureOfROund2);
+                if(playerOneWins)
+                {
+                    victims[0].score++;
+                    winnerOfThisGame = victims[0].playerName;
+                }
+                else
+                {
+                    victims[1].score++;
+                    winnerOfThisGame = victims[1].playerName;
+                }
+                Graphics("winner");
+            }
+        } 
 
 
         //Gameplay and starta of a round
@@ -211,6 +250,7 @@ namespace RPSLS
                     winnerOfThisGame = victims[1].playerName;
                     Graphics("gameWinner");
                 }
+
             }
 
             Console.ReadLine(); 

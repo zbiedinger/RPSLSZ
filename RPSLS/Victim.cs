@@ -26,7 +26,36 @@ namespace RPSLS
 
 
         //Member Methods
-        
+        //public Gesture SelectingGesture()
+        //{
+        //    Console.WriteLine("\nWhats your gesture of choice?");
+
+        //    Gesture currentGesture = gestureChoices[int.Parse(Console.ReadLine())];
+        //    return currentGesture;
+        //}
+
+        public Gesture SelectingGesture()
+        {
+            Console.WriteLine($"{playerName}'s gesture of choice?");
+
+            Gesture currentGesture = gestureChoices[int.Parse(Console.ReadLine())-1];
+            return currentGesture;
+        }
+
+
+        //can I do this by referincing the current gesture instead of passing both in?
+
+        //public bool Is1AWeaknessOf2(Gesture gestureOne, Gesture gestureTwo)
+        //{
+        //    if (gestureOne.name == gestureTwo.stringWeakness[0] || gestureOne.name == gestureTwo.stringWeakness[1])
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
     }
 }

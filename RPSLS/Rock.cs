@@ -9,14 +9,19 @@ namespace RPSLS
     class Rock : Gesture
     {
         //Member Variables
-        string name;
 
 
         //Constructor
         public Rock()
         {
-            string name = "Rock";
+            name = "rock";
 
+            stringWeakness = new List<string>() { "paper", "spock" };
+
+            //Paper paper = new Paper();
+            //Spock spock = new Spock();
+
+            //weeknesses = new List<Gesture> { paper, spock };
         }
 
 

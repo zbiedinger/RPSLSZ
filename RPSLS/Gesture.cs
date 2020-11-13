@@ -10,9 +10,8 @@ namespace RPSLS
     {
         //Member Variables
         public string name;
-        //public Gesture[] weaknesses;
+        public List<string> stringWeakness;
         //public List<Gesture> weeknesses;
-        //public list<string> weaknesses;
 
 
 
@@ -24,18 +23,6 @@ namespace RPSLS
 
 
         //Member Methods
-        public bool checkWeaknesses(Gesture gestureAttack, Gesture gestureOne, Gesture gestureTwo)
-        {
-
-            if (gestureAttack == gestureOne || gestureAttack == gestureTwo)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
+        
     }
 }

@@ -16,7 +16,14 @@ namespace RPSLS
         //Constructor
         public Paper()
         {
+            name = "paper";
 
+            stringWeakness = new List<string>() { "scissors", "lizard" };
+
+            //Scissors scissors = new Scissors();
+            //Lizard lizard = new Lizard();
+
+            //weeknesses = new List<Gesture>() { scissors, lizard };
         }
 
 
