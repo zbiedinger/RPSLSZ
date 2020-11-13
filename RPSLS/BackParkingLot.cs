@@ -116,7 +116,6 @@ namespace RPSLS
         //Set up the game play situation and peramiters: # of players and rounds
         public void StartUp()
         {
-            Graphics("start");
             Graphics("rules");
             
             SetNumberOfPlayers();
@@ -131,16 +130,25 @@ namespace RPSLS
         {
             switch (display)
             {
-                case "rules":
-                    //Display the rules of the game
-                    Console.WriteLine("________________________");
-                    break;
-                case "newRound":
-                    Console.WriteLine("Next Round! Are you ready?");
-                    break;
                 case "start":
                     //add cool graphis for the game
                     Console.WriteLine("Start of Game\n");
+                    break;
+                case "rules":
+                    //Display the rules of the game
+                    Console.WriteLine("     _____  _____   _____ _       _____ \n" +
+                        "    |  __ \\|  __ \\ / ____| |     / ____|\n" +
+                        "    | |__) | |__) | (___ | |    | (___\n" +
+                        "    |  _ / | ___ / \\___ \\| |     \\___ \\ \n" +
+                        "    | | \\ \\| |     ____) | |____ ____) |\n" +
+                        "    |_|  \\_\\_|    |_____/|______|_____/ \n\n");
+                    Console.WriteLine("Rules: Blah Blah Blah made pretty");
+                    Console.WriteLine("________________________");
+                    Console.WriteLine("Ready to play? enter");
+                    Console.ReadLine();
+                    break;
+                case "newRound":
+                    Console.WriteLine("Next Round! Are you ready?");
                     break;
                 case "score":
                     Console.WriteLine("____________________________________________");
@@ -154,12 +162,26 @@ namespace RPSLS
                     //if statment to see if player is losing or winner.
                     //add random number generator and pit a different comment each time
                     break;
+                case "rock":
+                    Console.WriteLine("  _____            _    \n" +
+                        " |  __ \\          | |\n" +
+                        " | |__) |___   ___| | __\n" +
+                        " |  _  // _ \\ / __| |/ /\n" +
+                        " | | \\ | (_) | (__|   <\n" +
+                        " |_|  \\_\\___ /\\___|_|\\_\\\n");
+                    break;
+                case "vs":
+      Console.WriteLine(" _  _ ___  \n" +
+                        "( \\/ / __) \n" +
+                        " \\  /\\__ \\ \n" +
+                        "  \\/ (___()");
+                    break;
                 case "choices":
                     Console.WriteLine("Pick you gesture:");
                     Console.WriteLine("1.Rock, 2.Paper, 3.Scissor, 4.Lizard, 5.Spock\n");
                     break;
                 case "tie":
-                    Console.WriteLine("you tied!");
+                    Console.WriteLine("You tied!");
                     break;
                 case "winner":
                     Console.WriteLine($"{winnerOfThisGame} won this round!");
@@ -172,6 +194,11 @@ namespace RPSLS
 
         }
 
+        public void DisplayGestures(Gesture gestureOne, Gesture gestureTwo)
+        {
+            Console.WriteLine($"\n{gestureOne.name} vs {gestureTwo.name}\n");
+
+        }
         //public string CompareGestures(Gesture gestureOne, Gesture gestureTwo)
         //{
         //    if(true)
@@ -182,6 +209,7 @@ namespace RPSLS
 
         //    return victims[0].playerName;
         //}
+
         public bool Is1AWeaknessOf2(Gesture gestureOne, Gesture gestureTwo)
         {
             if (gestureOne.name == gestureTwo.stringWeakness[0] || gestureOne.name == gestureTwo.stringWeakness[1])
@@ -203,7 +231,7 @@ namespace RPSLS
             Gesture gestureOfROund1 = victims[0].SelectingGesture();
             Gesture gestureOfROund2 = victims[1].SelectingGesture();
 
-            Console.WriteLine($"\n{gestureOfROund1.name} vs {gestureOfROund2.name}\n");
+            DisplayGestures(gestureOfROund1, gestureOfROund2);
 
             if (gestureOfROund1.name == gestureOfROund2.name)
             {

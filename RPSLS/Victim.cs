@@ -26,20 +26,14 @@ namespace RPSLS
 
 
         //Member Methods
-        //public Gesture SelectingGesture()
-        //{
-        //    Console.WriteLine("\nWhats your gesture of choice?");
-
-        //    Gesture currentGesture = gestureChoices[int.Parse(Console.ReadLine())];
-        //    return currentGesture;
-        //}
-
+        //asks user to pick a gesture and returns the gesture chosen
         public Gesture SelectingGesture()
         {
             Console.WriteLine($"{playerName}'s gesture of choice?");
 
             Gesture currentGesture = gestureChoices[int.Parse(Console.ReadLine())-1];
             return currentGesture;
+            //Console.Clear();
         }
 
 
