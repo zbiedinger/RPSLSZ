@@ -29,6 +29,9 @@ namespace RPSLS
         //Checking number of players in game.
         public void SetNumberOfPlayers()
         {
+            Console.WriteLine("\n+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+");
+            Console.WriteLine("                  Game setup");
+            Console.WriteLine("+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+\n");
             Console.WriteLine("One player or two?");
             string responcePlayer = Console.ReadLine();
 
@@ -91,17 +94,17 @@ namespace RPSLS
             {
                 if (responceRound == "3")
                 {
-                    Console.WriteLine("Lets play best of 3");
+                    Console.WriteLine("                   Best of 3");
                 }
                 else if (responceRound == "5")
                 {
                     bestOfNumber = 3;
-                    Console.WriteLine("Lets play best of 5");
+                    Console.WriteLine("                   Best of 5");
                 }
                 else if (responceRound == "9")
                 {
                     bestOfNumber = 5;
-                    Console.WriteLine("Lets play best of 9");
+                    Console.WriteLine("                   Best of 9");
                 }
                 else
                 {
@@ -116,7 +119,7 @@ namespace RPSLS
         public void StartUp()
         {            
             SetNumberOfPlayers();
-            Console.WriteLine("________________________");
+            Console.WriteLine("\n+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+\n");
             SetNumberOfRounds();
         }
 
@@ -137,15 +140,30 @@ namespace RPSLS
                     break;
                 case "rules":
                     //Display the rules of the game
-                    Console.WriteLine("     _____  _____   _____ _       _____ \n" +
-                        "    |  __ \\|  __ \\ / ____| |     / ____|\n" +
-                        "    | |__) | |__) | (___ | |    | (___\n" +
-                        "    |  _ / | ___ / \\___ \\| |     \\___ \\ \n" +
-                        "    | | \\ \\| |     ____) | |____ ____) |\n" +
-                        "    |_|  \\_\\_|    |_____/|______|_____/ \n\n");
-                    Console.WriteLine("Rules: Blah Blah Blah made pretty");
-                    Console.WriteLine("________________________");
-                    Console.WriteLine("Ready to play? enter");
+                    Console.WriteLine("                _____  _____   _____ _       _____ \n" +
+                        "               |  __ \\|  __ \\ / ____| |     / ____|\n" +
+                        "               | |__) | |__) | (___ | |    | (___\n" +
+                        "               |  _ / | ___ / \\___ \\| |     \\___ \\ \n" +
+                        "               | | \\ \\| |     ____) | |____ ____) |\n" +
+                        "               |_|  \\_\\_|    |_____/|______|_____/ \n\n");
+                    Console.WriteLine("      .-.------------------------------------------------.-.\n" +
+                        "     ((o))                                                  )\n" +
+                        "      \\U/  _______              _________            ____  /\n" +
+                        "        |                                                 |\n" +
+                        "        |                       RULES                     |\n" +
+                        "        |                       -----                     |\n" +
+                        "        |                                                 |\n" +
+                        "        |  1. ROCK crushes SCISSORS and LIZARD.           |\n" +
+                        "        |  2. PAPER covers ROCK and disproves SPOCK       |\n" +
+                        "        |  3. SCISSORS cuts PAPER and decapitates LIZARD  |\n" +
+                        "        |  4. LIZARD poisons SPOCK and eats PAPER         |\n" +
+                        "        |  5. SPOCK smashes SCISSORS and vaporizes ROCK   |\n" +
+                        "        |                                                 |\n" +
+                        "        | ____       _______     __    ____      ___      |\n" +
+                        "       /A\\                                                \\\n" +
+                        "      ((o))                                                )\n" +
+                        "       '-'------------------------------------------------'\n");
+                    Console.WriteLine("                        Press ENTER to play");
                     Console.ReadLine();
                     Console.Clear();
                     break;
@@ -183,13 +201,30 @@ namespace RPSLS
                         "            |_| \n");
                     break;
                 case "scissors":
-                    Console.WriteLine("\nscissors\n");
+                    Console.WriteLine("   _____      _                        \n" +
+                        "  / ____|    (_)\n" +
+                        " | (___   ___ _ ___ ___  ___  _ __ ___ \n" +
+                        "  \\___ \\ / __| / __/ __|/ _ \\| '__/ __|\n" +
+                        "  ____) | (__| \\__ \\__ \\ (_) | |  \\__ \\\n" +
+                        " |_____/ \\___|_|___/___/\\___/|_|  |___/ \n");
                     break;
                 case "lizard":
-                    Console.WriteLine("\nlizard\n");
+                    Console.WriteLine("  _      _                  _ \n" +
+                        " | |    (_)                | |\n" +
+                        " | |     _ ______ _ _ __ __| |\n" +
+                        " | |    | |_  / _` | '__/ _` |\n" +
+                        " | |____| |/ / (_| | | | (_| |\n" +
+                        " |______|_/___\\__,_|_|  \\__,_| \n");
                     break;
                 case "spock":
-                    Console.WriteLine("\nspock\n");
+      Console.WriteLine("   _____                  _    \n" +
+                        "  / ____|                | |\n" +
+                        " | (___  _ __   ___   ___| | __\n" +
+                        "  \\___ \\| '_ \\ / _ \\ / __| |/ /\n" +
+                        "  ____) | |_) | (_) | (__|   <\n" +
+                        " |_____/| .__/ \\___/ \\___|_|\\_\\\n" +
+                        "        | |\n" +
+                        "        |_| \n");
                     break;
                 case "vs":
                     Console.WriteLine("            _  _ ___  \n" +
@@ -225,21 +260,11 @@ namespace RPSLS
             Console.WriteLine("..............................................");
         }
 
-        //public string CompareGestures(Gesture gestureOne, Gesture gestureTwo)
-        //{
-        //    if(true)
-        //    {
-
-        //    }
-        //    victims[0].score++;
-
-        //    return victims[0].playerName;
-        //}
-
-        
         //check which gesture beats another
-        public bool Is1AWeaknessOf2(Gesture gestureOne, Gesture gestureTwo)
+        public bool CompareGestures(Gesture gestureOne, Gesture gestureTwo)
         {
+
+            bool winner = !gestureOne.stringWeakness.Contains(gestureTwo.name);
             if (gestureOne.name == gestureTwo.stringWeakness[0] || gestureOne.name == gestureTwo.stringWeakness[1])
             {
                 return true;
@@ -267,7 +292,7 @@ namespace RPSLS
             }
             else
             {
-                bool playerOneWins = Is1AWeaknessOf2(gestureOfROund1, gestureOfROund2);
+                bool playerOneWins = CompareGestures(gestureOfROund1, gestureOfROund2);
                 if(playerOneWins)
                 {
                     victims[0].score++;
@@ -297,6 +322,7 @@ namespace RPSLS
                     {
                         victim.score = 0;
                     }
+                    Console.Clear();
                 }
                 else if (responceGame == "2")
                 {
