@@ -169,14 +169,33 @@ namespace RPSLS
                         " |  __ \\          | |\n" +
                         " | |__) |___   ___| | __\n" +
                         " |  _  // _ \\ / __| |/ /\n" +
-                        " | | \\ | (_) | (__|   <\n" +
-                        " |_|  \\_\\___ /\\___|_|\\_\\\n");
+                        " | | \\ \\ (_) | (__|   <\n" +
+                        " |_|  \\_\\___/ \\___|_|\\_\\\n");
+                    break;
+                case "paper":
+                    Console.WriteLine("  _____                      \n" +
+                        " |  __ \\                     \n" +
+                        " | |__) |_ _ _ __   ___ _ __\n" +
+                        " |  ___/ _` | '_ \\ / _ \\ '__|\n" +
+                        " | |  | (_| | |_) |  __/ |\n" +
+                        " |_|   \\__,_| .__/ \\___|_|\n" +
+                        "            | |\n" +
+                        "            |_| \n");
+                    break;
+                case "scissors":
+                    Console.WriteLine("\nscissors\n");
+                    break;
+                case "lizard":
+                    Console.WriteLine("\nlizard\n");
+                    break;
+                case "spock":
+                    Console.WriteLine("\nspock\n");
                     break;
                 case "vs":
-                    Console.WriteLine(" _  _ ___  \n" +
-                        "( \\/ / __) \n" +
-                        " \\  /\\__ \\ \n" +
-                        "  \\/ (___()");
+                    Console.WriteLine("            _  _ ___  \n" +
+                        "           ( \\/ / __) \n" +
+                        "            \\  /\\__ \\ \n" +
+                        "             \\/ (___()\n");
                     break;
                 case "choices":
                     Console.WriteLine("Gestures:");
@@ -189,19 +208,21 @@ namespace RPSLS
                     Console.WriteLine($"{winnerOfThisGame} won this round!");
                     break;
                 case "gameWinner":
-                    Console.WriteLine($"{winnerOfThisGame} is the Winner");
+                    Console.WriteLine($"\n{winnerOfThisGame} is the Winner\n");
                     break;
 
             }
 
         }
 
+        //Display the two gestures going hesd to head
         public void DisplayGestures(Gesture gestureOne, Gesture gestureTwo)
         {
-            Console.WriteLine("________________________");
-            Console.WriteLine($"\n{gestureOne.name} vs {gestureTwo.name}\n");
-            Console.WriteLine("________________________");
-
+            Console.WriteLine("..............................................");
+            Graphics(gestureOne.name);
+            Graphics("vs");
+            Graphics(gestureTwo.name);
+            Console.WriteLine("..............................................");
         }
 
         //public string CompareGestures(Gesture gestureOne, Gesture gestureTwo)
@@ -215,6 +236,8 @@ namespace RPSLS
         //    return victims[0].playerName;
         //}
 
+        
+        //check which gesture beats another
         public bool Is1AWeaknessOf2(Gesture gestureOne, Gesture gestureTwo)
         {
             if (gestureOne.name == gestureTwo.stringWeakness[0] || gestureOne.name == gestureTwo.stringWeakness[1])
@@ -259,6 +282,35 @@ namespace RPSLS
             }
         } 
 
+        //ask to play another game and set variable accourdingly
+        public void PlayAnotherGame()
+        {
+            Console.WriteLine("Play another game?\n1.Yes    2.No");
+            string responceGame = Console.ReadLine();
+
+            do
+            {
+                if (responceGame == "1")
+                {
+                    noWinner = true;
+                    foreach (Victim victim in victims)
+                    {
+                        victim.score = 0;
+                    }
+                }
+                else if (responceGame == "2")
+                {
+                    Console.WriteLine("Thanks for joining us in the back parking lot\n" +
+                        "to play RPSLS. We will be here all week.");
+                }
+                else
+                {
+                    Console.WriteLine("Try that again");
+                    responceGame = Console.ReadLine();
+                }
+            } while (responceGame != "1" && responceGame != "2");
+        }
+
         //Gameplay and starta of a round
         public void Gameplay()
         {
@@ -267,26 +319,28 @@ namespace RPSLS
             Console.Clear();
             Graphics("start");
 
+
             while (noWinner)
             {
                 RoundOfGame();
-                
+
                 if (victims[0].score == bestOfNumber)
                 {
                     noWinner = false;
                     winnerOfThisGame = victims[0].playerName;
                     Graphics("gameWinner");
+                    PlayAnotherGame();
                 }
                 else if (victims[1].score == bestOfNumber)
                 {
                     noWinner = false;
                     winnerOfThisGame = victims[1].playerName;
                     Graphics("gameWinner");
+                    PlayAnotherGame();
                 }
-
             }
-
-            Console.ReadLine(); 
+     
+            Console.ReadLine();
         }
 
     }

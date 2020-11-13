@@ -31,7 +31,7 @@ namespace RPSLS
 
             while (responcePlayer != "1" && responcePlayer != "2" && responcePlayer != "3" && responcePlayer != "4" && responcePlayer != "5")
             {
-                Console.WriteLine($"\n{playerName}'s try again?");
+                Console.WriteLine($"\n{playerName} try again?");
                 responcePlayer = Console.ReadLine();
             }
 
