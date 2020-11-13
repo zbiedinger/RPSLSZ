@@ -15,15 +15,12 @@ namespace RPSLS
         public int score;
         public string currentGesture;
 
-
-
         //Constructor
         public Victim()
         {
             score = 0;
             currentGesture = "";
         }
-
 
         //Member Methods
         //asks user to pick a gesture and returns the gesture chosen
@@ -43,21 +40,5 @@ namespace RPSLS
             //Console.Clear();
             return currentGesture;
         }
-
-
-        //can I do this by referincing the current gesture instead of passing both in?
-
-        //public bool Is1AWeaknessOf2(Gesture gestureOne, Gesture gestureTwo)
-        //{
-        //    if (gestureOne.name == gestureTwo.stringWeakness[0] || gestureOne.name == gestureTwo.stringWeakness[1])
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
-
     }
 }

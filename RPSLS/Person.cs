@@ -10,7 +10,6 @@ namespace RPSLS
     {
         //Member Variables
 
-
         //Constructor
         public Person(string playerName)
         {
@@ -25,9 +24,7 @@ namespace RPSLS
             gestureChoices = new List<Gesture>() { rock, paper, scissors, lizard, spock };
         }
 
-
         //Member Methods
        
-
     }
 }

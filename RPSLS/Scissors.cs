@@ -10,23 +10,17 @@ namespace RPSLS
     {
         //Member Variables
 
-
-
         //Constructor
-       public Scissors()
+        public Scissors()
         {
             name = "scissors";
-
             stringWeakness = new List<string>() { "rock", "spock" };
-
 
             //Rock rock = new Rock();
             //Spock spock = new Spock();
 
             //weeknesses = new List<Gesture>() { rock, spock };
         }
-
-
 
         //Member Methods
     }

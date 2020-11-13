@@ -15,7 +15,6 @@ namespace RPSLS
         public List<Victim> victims;
 
 
-
         //Constructor
         public BackParkingLot()
         {
@@ -24,7 +23,6 @@ namespace RPSLS
             winnerOfThisGame = "";
             victims = new List<Victim>();
         }
-
 
 
         //Member Methods
@@ -63,7 +61,8 @@ namespace RPSLS
             }
         }
 
-        //Creating Vicims based on passed string. set up to allow more posssible child classes of victim
+        //Creating Vicims based on passed in string.
+        //Set up as a switch to allow more posssible child classes of victim i.e. "kid", "old person", "cheater"
         public void CreateVictim(string victimType)
         {
             switch (victimType)
@@ -106,17 +105,17 @@ namespace RPSLS
                 }
                 else
                 {
-                    Console.WriteLine("Lets try that again.\nHow many rounds to get a winner? 3, 5, or 9");
+                    Console.WriteLine("Lets try that again.\n3, 5, or 9");
                     responceRound = Console.ReadLine();
                 }
             } while (responceRound != "3" && responceRound != "5" && responceRound != "9");
+            Console.ReadLine();
         }
 
         //Set up the game play situation and peramiters: # of players and rounds
         public void StartUp()
         {            
             SetNumberOfPlayers();
-
             Console.WriteLine("________________________");
             SetNumberOfRounds();
         }

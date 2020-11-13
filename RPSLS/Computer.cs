@@ -26,7 +26,6 @@ namespace RPSLS
             gestureChoices = new List<Gesture>() { rock, paper, scissors, lizard, spock };
         }
 
-
         //Member Methods
         public override Gesture SelectingGesture()
         {

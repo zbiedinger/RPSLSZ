@@ -13,14 +13,11 @@ namespace RPSLS
         public List<string> stringWeakness;
         //public List<Gesture> weeknesses;
 
-
-
         //Constructor
         public Gesture()
         {
 
         }
-
 
         //Member Methods
         
