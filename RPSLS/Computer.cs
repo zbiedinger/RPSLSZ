@@ -28,6 +28,13 @@ namespace RPSLS
 
 
         //Member Methods
-        
+        public override Gesture SelectingGesture()
+        {
+            Gesture currentGesture = gestureChoices[rand.Next(5)];
+            Console.WriteLine($"\n{playerName} chose {currentGesture.name}");
+
+            return currentGesture;
+            //Console.Clear();
+        }
     }
 }

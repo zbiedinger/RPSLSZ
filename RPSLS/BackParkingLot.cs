@@ -69,12 +69,11 @@ namespace RPSLS
             switch (victimType)
             {
                 case "person":
-                    Console.WriteLine("Player's name?");
+                    Console.WriteLine("\nPlayer's name?");
                     string inputName = Console.ReadLine();
                     Person player = new Person(inputName);
                     victims.Add(player);
                     break;
-
                 case "computer":
                     Computer robot = new Computer();
                     victims.Add(robot);
@@ -115,9 +114,7 @@ namespace RPSLS
 
         //Set up the game play situation and peramiters: # of players and rounds
         public void StartUp()
-        {
-            Graphics("rules");
-            
+        {            
             SetNumberOfPlayers();
 
             Console.WriteLine("________________________");
@@ -132,7 +129,12 @@ namespace RPSLS
             {
                 case "start":
                     //add cool graphis for the game
-                    Console.WriteLine("Start of Game\n");
+                    Console.WriteLine("        _____ _______       _____ _______ \n" +
+                        "       / ____|__   __|/\\   |  __ \\__   __|\n" +
+                        "      | (___    | |  /  \\  | |__) | | |\n" +
+                        "       \\___ \\   | | / /\\ \\ |  _  /  | |\n" +
+                        "       ____) |  | |/ ____ \\| | \\ \\  | |\n" +
+                        "      |_____/   |_/_/    \\_\\_|  \\_\\ |_| ");
                     break;
                 case "rules":
                     //Display the rules of the game
@@ -146,15 +148,16 @@ namespace RPSLS
                     Console.WriteLine("________________________");
                     Console.WriteLine("Ready to play? enter");
                     Console.ReadLine();
+                    Console.Clear();
                     break;
                 case "newRound":
                     Console.WriteLine("Next Round! Are you ready?");
                     break;
                 case "score":
-                    Console.WriteLine("____________________________________________");
-                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                    Console.WriteLine($"                                    {victims[0].playerName}: {victims[0].score}");
-                    Console.WriteLine($"                                    {victims[1].playerName}: {victims[1].score}");
+                    Console.WriteLine("______________________________________________");
+                    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                    Console.WriteLine($"                                     {victims[0].playerName}: {victims[0].score}");
+                    Console.WriteLine($"                                     {victims[1].playerName}: {victims[1].score}");
                     break;
                 case "slander":
                     //tongue and cheek comments to make things more fun
@@ -171,13 +174,13 @@ namespace RPSLS
                         " |_|  \\_\\___ /\\___|_|\\_\\\n");
                     break;
                 case "vs":
-      Console.WriteLine(" _  _ ___  \n" +
+                    Console.WriteLine(" _  _ ___  \n" +
                         "( \\/ / __) \n" +
                         " \\  /\\__ \\ \n" +
                         "  \\/ (___()");
                     break;
                 case "choices":
-                    Console.WriteLine("Pick you gesture:");
+                    Console.WriteLine("Gestures:");
                     Console.WriteLine("1.Rock, 2.Paper, 3.Scissor, 4.Lizard, 5.Spock\n");
                     break;
                 case "tie":
@@ -196,9 +199,12 @@ namespace RPSLS
 
         public void DisplayGestures(Gesture gestureOne, Gesture gestureTwo)
         {
+            Console.WriteLine("________________________");
             Console.WriteLine($"\n{gestureOne.name} vs {gestureTwo.name}\n");
+            Console.WriteLine("________________________");
 
         }
+
         //public string CompareGestures(Gesture gestureOne, Gesture gestureTwo)
         //{
         //    if(true)
@@ -254,12 +260,12 @@ namespace RPSLS
             }
         } 
 
-
         //Gameplay and starta of a round
         public void Gameplay()
         {
-            StartUp();
             Graphics("rules");
+            StartUp();
+            Console.Clear();
             Graphics("start");
 
             while (noWinner)
