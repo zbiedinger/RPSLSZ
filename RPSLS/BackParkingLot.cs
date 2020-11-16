@@ -35,30 +35,24 @@ namespace RPSLS
             Console.WriteLine("One player or two?");
             string responcePlayer = Console.ReadLine();
 
-            do
+            while (responcePlayer != "1" && responcePlayer != "2")
             {
-                if (responcePlayer == "1")
-                {
-                    Console.WriteLine("You chose one player.");
-                }
-                else if (responcePlayer == "2")
-                {
-                    Console.WriteLine("You chose two players.");
-                }
-                else
-                {
-                    Console.WriteLine("Lets try that again.\n1 or 2 players?");
-                    responcePlayer = Console.ReadLine();
-                }
-            } while (responcePlayer != "1" && responcePlayer != "2");
+                Console.WriteLine("Lets try that again.\n1 or 2 players?");
+                responcePlayer = Console.ReadLine();
+            }
 
             if (responcePlayer == "1")
             {
+                Console.WriteLine("You chose one player.");
+
                 CreateVictim("person");
                 CreateVictim("computer");
             }
             else if (responcePlayer == "2")
             {
+
+                Console.WriteLine("You chose two players.");
+
                 CreateVictim("person");
                 CreateVictim("person");
             }
@@ -90,28 +84,31 @@ namespace RPSLS
 
             string responceRound = Console.ReadLine();
 
-            do
+            while (responceRound != "3" && responceRound != "5" && responceRound != "9")
             {
-                if (responceRound == "3")
-                {
-                    Console.WriteLine("                   Best of 3");
-                }
-                else if (responceRound == "5")
-                {
-                    bestOfNumber = 3;
-                    Console.WriteLine("                   Best of 5");
-                }
-                else if (responceRound == "9")
-                {
-                    bestOfNumber = 5;
-                    Console.WriteLine("                   Best of 9");
-                }
-                else
-                {
-                    Console.WriteLine("Lets try that again.\n3, 5, or 9");
-                    responceRound = Console.ReadLine();
-                }
-            } while (responceRound != "3" && responceRound != "5" && responceRound != "9");
+
+                Console.WriteLine("\nLets try that again.\n3, 5, or 9");
+                responceRound = Console.ReadLine();
+            }
+
+            if (responceRound == "3")
+            {
+                Console.WriteLine("                   Best of 3");
+                Console.WriteLine("              Press ENTER to begin");
+            }
+            else if (responceRound == "5")
+            {
+                bestOfNumber = 3;
+                Console.WriteLine("                   Best of 5");
+                Console.WriteLine("              Press ENTER to begin");
+            }
+            else if (responceRound == "9")
+            {
+                bestOfNumber = 5;
+                Console.WriteLine("                   Best of 9");
+                Console.WriteLine("              Press ENTER to begin");
+            }
+
             Console.ReadLine();
         }
 
@@ -175,12 +172,6 @@ namespace RPSLS
                     Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                     Console.WriteLine($"                                     {victims[0].playerName}: {victims[0].score}");
                     Console.WriteLine($"                                     {victims[1].playerName}: {victims[1].score}");
-                    break;
-                case "slander":
-                    //tongue and cheek comments to make things more fun
-                    //maybe add comments of encuragement if a player is losing?
-                    //if statment to see if player is losing or winner.
-                    //add random number generator and pit a different comment each time
                     break;
                 case "rock":
                     Console.WriteLine("  _____            _    \n" +
@@ -313,28 +304,29 @@ namespace RPSLS
             Console.WriteLine("Play another game?\n1.Yes    2.No");
             string responceGame = Console.ReadLine();
 
-            do
-            {
-                if (responceGame == "1")
-                {
-                    noWinner = true;
-                    foreach (Victim victim in victims)
-                    {
-                        victim.score = 0;
-                    }
-                    Console.Clear();
-                }
-                else if (responceGame == "2")
-                {
-                    Console.WriteLine("Thanks for joining us in the back parking lot\n" +
-                        "to play RPSLS. We will be here all week.");
-                }
-                else
-                {
-                    Console.WriteLine("Try that again");
+            while (responceGame != "1" && responceGame != "2")
+            { 
+                Console.WriteLine("Try that again");
                     responceGame = Console.ReadLine();
+                
+            }
+
+            if (responceGame == "1")
+            {
+                foreach (Victim victim in victims)
+                {
+                    victim.score = 0;
                 }
-            } while (responceGame != "1" && responceGame != "2");
+                noWinner = true;
+                Console.Clear();
+            }
+            else if (responceGame == "2")
+            {
+                Console.Clear();
+                Console.WriteLine("\n\nThanks for joining us in the back parking lot\n" +
+                    "to play RPSLS. We will be here all week.");
+                noWinner = false;
+            }
         }
 
         //Gameplay and starta of a round
@@ -352,14 +344,12 @@ namespace RPSLS
 
                 if (victims[0].score == bestOfNumber)
                 {
-                    noWinner = false;
                     winnerOfThisGame = victims[0].playerName;
                     Graphics("gameWinner");
-                    PlayAnotherGame();
+                     PlayAnotherGame();
                 }
                 else if (victims[1].score == bestOfNumber)
                 {
-                    noWinner = false;
                     winnerOfThisGame = victims[1].playerName;
                     Graphics("gameWinner");
                     PlayAnotherGame();
